@@ -1,4 +1,5 @@
 import turtle as t
+import pygame
 
 t1 = t.Turtle()
 t2 = t.Turtle()
@@ -160,7 +161,6 @@ def move_block(x, y):
             pass  
     elif 50 <= x <= 150 and 50 >= y >= -50:
         print("6번 위치")
-
         if locations[location3] == None:
             locations[location6].setposition(location3)
             locations[location3] = locations[location6]
@@ -214,8 +214,26 @@ def move_block(x, y):
             locations[location8] = locations[location9]
             locations[location9] = None
         else:
-         pass 
-
+            pass 
+    '''
+    if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == t9): 
+            print("the game's over")
+    '''        
+    li = [t1, t2, t3, t4, t5, t6, t7, t8, t9]  
+    for i in li:
+        if locations.get(i) == i:
+            print("Game's over") 
+            '''
+            msg = game_font.render(game_result, True, (255, 255, 0))            
+            msg_rect = msg.get_rect(center=(int(screen_width / 2), int(screen_height / 2)))
+            screen.blit(msg, msg_rect)
+            pygame.display.update()
+            pygame.time.delay(2000)
+            sys.exit("인자값") ----import sys
+            '''
+            pygame.quit()
+           
+     
     print("1번퍼즐 위치:", t1.position())
     print("2번퍼즐 위치:", t2.position())
     print("3번퍼즐 위치:", t3.position())
@@ -225,6 +243,9 @@ def move_block(x, y):
     print("7번퍼즐 위치:", t7.position())
     print("8번퍼즐 위치:", t8.position())
     print("9번퍼즐 위치:", t9.position())
+
+
+
 
 t1.onclick(move_block)
 t2.onclick(move_block)
