@@ -50,28 +50,98 @@ t7.color("blue")
 t8.color("gray")
 t9.color("red")
 
-t1.goto(-100, 100)
-t2.goto(0, 100)
-t3.goto(100, 100)
 
-t4.goto(-100, 0)
-t5.goto(0, 0)
-t6.goto(100, 0)
 
-t7.goto(-100, -100)
-t8.goto(0, -100)
-t9.goto(100, -100)
+location = {1:[-100, 100], 2:[0, 100], 3:[100, 100]}
+block = [1, 2, 3, 4, 5, 6, 7, 8]
 
+location1 = -100, 100
+location2 = 0, 100
+location3 = 100, 100
+location4 = -100, 0
+location5 = 0, 0
+location6 = 100, 0
+location7 = -100, -100
+location8 = 0, -100
+location9 = 100, -100
+
+t1.goto(location1)
+t2.goto(location2)
+t3.goto(location3)
+t4.goto(location9)
+t5.goto(location5)
+t6.goto(location6)
+t7.goto(location7)
+t8.goto(location8)
+t9.goto(location9)
+
+locations = {location1:t1, location2:t2, location3:t3, location4:None,
+             location5:t5, location6:t6, location7:t7, location8:t8,
+             location9:t9}
 
 def move_block(x, y):
     print(x, y)
-    print(t1.position())
-    print(t2.position())
-    print(t3.position())
+    if -50 >= x >= -150 and 50 <= y <= 150:
+        print("1번 위치")
+        if locations[location2] == None:
+            locations[location1].setposition(location2)
+            locations[location2] = locations[location1]
+            locations[location1] = None
+        elif locations[location4] == None:
+            locations[location1].setposition(location4)
+            locations[location4] = locations[location1]
+            locations[location1] = None
+        else:
+            pass
+    elif 50 >= x >= -50 and 50 <= y <= 150:
+        print("2번 위치")
+        if locations[location1] == None:
+            locations[location2].setposition(location1)
+            locations[location1] = locations[location2]
+            locations[location2] = None
+        elif locations[location5] == None:
+            locations[location2].setposition(location5)
+            locations[location5] = locations[location2]
+            locations[location2] = None
+        elif locations[location3] == None:
+            locations[location2].setposition(location3)
+            locations[location3] = locations[location2]
+            locations[location2] = None
+        else:
+            pass
+    elif 50 <= x <= 150 and 50 <= y <= 150:
+        print("3번 위치")
+    elif -50 >= x >= -150 and 50 >= y >= -50:
+        print("4번 위치")
+    elif 50 >= x >= -50 and 50 >= y >= -50:
+        print("5번 위치")
+    elif 50 <= x <= 150 and 50 >= y >= -50:
+        print("6번 위치")
+    elif -50 >= x >= -150 and -50 >= y >= -150:
+        print("7번 위치")
+    elif 50 >= x >= -50 and -50 >= y >= -150:
+        print("8번 위치")
+    elif 50 <= x <= 150 and -50 >= y >= -150:
+        print("9번 위치")
 
+    print("1번퍼즐 위치:", t1.position())
+    print("2번퍼즐 위치:", t2.position())
+    print("3번퍼즐 위치:", t3.position())
+    print("4번퍼즐 위치:", t4.position())
+    print("5번퍼즐 위치:", t5.position())
+    print("6번퍼즐 위치:", t6.position())
+    print("7번퍼즐 위치:", t7.position())
+    print("8번퍼즐 위치:", t8.position())
+    print("9번퍼즐 위치:", t9.position())
 
 t1.onclick(move_block)
-
-
+t2.onclick(move_block)
+t3.onclick(move_block)
+t4.onclick(move_block)
+t5.onclick(move_block)
+t6.onclick(move_block)
+t7.onclick(move_block)
+t8.onclick(move_block)
+t9.onclick(move_block)
 
 t.mainloop()
