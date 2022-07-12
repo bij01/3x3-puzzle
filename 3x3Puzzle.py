@@ -212,7 +212,6 @@ def game_over():
 
 
 def start_game(x, y):
-
     global btnB, gameB
     btnB = False
     if gameB == False:
@@ -268,7 +267,6 @@ def set_blocks():
         t_list[i-1].shapesize(5, 5, 0)
         t_list[i-1].goto(l_list[i-1])
         t_list[i-1].onclick(move_block)
-
     t.register_shape("img/start.gif")
     t.register_shape("img/quit.gif")
     t.register_shape("img/title.gif")
