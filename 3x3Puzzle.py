@@ -35,6 +35,7 @@ location9 = 100, -80
 
 t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
 t_list2 = [t1, t2, t3, t4, t5, t6, t7, t8]
+t_list3 = [t1, t2, t3, t4, t5, t6, t7, t8]
 
 l_list = [location1, location2, location3, location4, location5,
           location6, location7, location8, location9]
@@ -205,6 +206,11 @@ def game_over():
 
 
 def start_game(x, y):
+    for i in range(0, 8):
+        t_list[i].goto(l_list[i])
+        locations[l_list[i]] = t_list[i]
+
+    locations[l_list[8]] = None
     global startTime
     startTime = time.time()
     pen.clear()
@@ -212,10 +218,18 @@ def start_game(x, y):
         x.showturtle()
     gameover.hideturtle()
     pen.hideturtle()
-    random.shuffle(t_list2)
-    for i in range(0, len(t_list2)):
-        t_list2[i].goto(l_list[i])
-        locations[l_list[i]] = t_list2[i]
+    random.shuffle(t_list3)
+
+    fCount = 0
+    for x in range(len(t_list2)):
+        if t_list2[x] != t_list3[x]:
+            fCount += 1
+    if fCount % 2 != 0:
+        start_game(0, 0)
+    else:
+        for i in range(0, len(t_list3)):
+            t_list3[i].goto(l_list[i])
+            locations[l_list[i]] = t_list3[i]
 
 
 def set_blocks():
