@@ -1,6 +1,9 @@
 import turtle as t
 import time
 
+t.title("3x3 Puzzle Game")
+t.bgpic("img/bg.gif")
+t.setup(567, 564)
 
 t1 = t.Turtle()
 t2 = t.Turtle()
@@ -16,10 +19,9 @@ quit = t.Turtle()
 title = t.Turtle()
 gameover = t.Turtle()
 gameover.hideturtle()
+pen = t.Turtle()
+pen.hideturtle()
 
-t.bgpic("img/bg.gif")
-t.setup(567, 564)
-t.title("3x3 Puzzle Game")
 
 location1 = -100, 120
 location2 = 0, 120
@@ -31,7 +33,7 @@ location7 = -100, -80
 location8 = 0, -80
 location9 = 100, -80
 
-t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9, start, title]
+t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
 l_list = [location1, location2, location3, location4, location5,
           location6, location7, location8, location9]
 
@@ -181,22 +183,37 @@ def move_block(x, y):
             pass 
     
     if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None): 
-        print("the game's over")
+        game_over()
 
-    print(locations[location1] == t1)
-    print(locations[location2] == t2)
-    print(locations[location3] == t3)
-    print(locations[location4] == t4)
-    print(locations[location5] == t5)
-    print(locations[location6] == t6)
-    print(locations[location7] == t7)
-    print(locations[location8] == t8)
-    print(locations[location9] == None)
 
-def game_over(x, y):
-    print("")
+def quit_game(x, y):
+    t.bye()
+
+
+def game_over():
+    endTime = time.time()
+    playTime = time.localtime(endTime-startTime)
+    for x in t_list:
+        x.hideturtle()
+    gameover.showturtle()
+    pen.showturtle()
+    pen.penup()
+    pen.goto(0, 0)
+    pen.write("걸린시간: {}분 {}초".format(playTime.tm_min, playTime.tm_sec)
+              , move=True, align='center', font=('배달의민족 주아', 20, 'normal'))
+    pen.goto(120, 20)
+
 
 def start_game(x, y):
+    global startTime
+    startTime = time.time()
+    pen.clear()
+    for x in t_list:
+        x.showturtle()
+
+    gameover.hideturtle()
+    pen.hideturtle()
+
     print("") #1~8랜덤으로 섞어야함
     t_list[3].goto(location5)
     t_list[4].goto(location4)
@@ -223,7 +240,8 @@ def set_blocks():
     t.register_shape("img/quit.gif")
     t.register_shape("img/title.gif")
     t.register_shape("img/gameover.gif")
-
+    t.register_shape("img/pen.gif")
+    
     title.penup()
     title.shape("img/title.gif")
     title.setposition(130, 260)
@@ -236,28 +254,15 @@ def set_blocks():
     quit.shape("img/quit.gif")
     quit.penup()
     quit.goto(80, -200)
+    quit.onclick(quit_game)
+
     gameover.shape("img/gameover.gif")
     gameover.penup()
     gameover.goto(0, 100)
+
+    pen.shape("img/pen.gif")
 
 
 set_blocks()
 
 t.mainloop()
-
-
-
-
-
-
-
-
-
-'''     
-msg = game_font.render(game_result, True, (255, 255, 0))            
-msg_rect = msg.get_rect(center=(int(screen_width / 2), int(screen_height / 2)))
-screen.blit(msg, msg_rect)
-pygame.display.update()
-pygame.time.delay(2000)
-sys.exit("인자값") ----import sys
-'''
