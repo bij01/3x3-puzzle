@@ -39,21 +39,21 @@ location9 = 100, -80
 t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
 t_list2 = [1, 2, 3, 4, 5, 6, 7, 8]
 
-
 l_list = [location1, location2, location3, location4, location5,
           location6, location7, location8, location9]
 
-locations = {location1:t1, location2:t2, location3:t3, location4:t4,
-             location5:t5, location6:t6, location7:t7, location8:t8,
-             location9:None}
+locations = {location1: t1, location2: t2, location3: t3, location4: t4,
+             location5: t5, location6: t6, location7: t7, location8: t8,
+             location9: None}
+
 
 def move_block(x, y):
     if btnB == False:
         pass
     else:
-        #print(x, y)
+        # print(x, y)
         if -50 >= x >= -150 and 70 <= y <= 170:
-            #print("1번 위치")
+            # print("1번 위치")
             if locations[location2] == None:
                 locations[location1].setposition(location2)
                 locations[location2] = locations[location1]
@@ -64,8 +64,8 @@ def move_block(x, y):
                 locations[location1] = None
             else:
                 pass
-        if 50 >= x >= -50 and 70 <= y <= 170:
-            #print("2번 위치")
+        elif 50 >= x >= -50 and 70 <= y <= 170:
+            # print("2번 위치")
             if locations[location1] == None:
                 locations[location2].setposition(location1)
                 locations[location1] = locations[location2]
@@ -80,8 +80,8 @@ def move_block(x, y):
                 locations[location2] = None
             else:
                 pass
-        if 50 <= x <= 150 and 70 <= y <= 170:
-            #print("3번 위치")
+        elif 50 <= x <= 150 and 70 <= y <= 170:
+            # print("3번 위치")
             if locations[location2] == None:
                 locations[location3].setposition(location2)
                 locations[location2] = locations[location3]
@@ -92,8 +92,8 @@ def move_block(x, y):
                 locations[location3] = None
             else:
                 pass
-        if -50 >= x >= -150 and 70 >= y >= -30:
-            #print("4번 위치")
+        elif -50 >= x >= -150 and 70 >= y >= -30:
+            # print("4번 위치")
             if locations[location1] == None:
                 locations[location4].setposition(location1)
                 locations[location1] = locations[location4]
@@ -108,8 +108,8 @@ def move_block(x, y):
                 locations[location4] = None
             else:
                 pass
-        if 50 >= x >= -50 and 70 >= y >= -30:
-            #print("5번 위치")
+        elif 50 >= x >= -50 and 70 >= y >= -30:
+            # print("5번 위치")
             if locations[location2] == None:
                 locations[location5].setposition(location2)
                 locations[location2] = locations[location5]
@@ -128,13 +128,13 @@ def move_block(x, y):
                 locations[location5] = None
             else:
                 pass
-        if 50 <= x <= 150 and 70 >= y >= -30:
-            #print("6번 위치")
+        elif 50 <= x <= 150 and 70 >= y >= -30:
+            # print("6번 위치")
             if locations[location3] == None:
                 locations[location6].setposition(location3)
                 locations[location3] = locations[location6]
                 locations[location6] = None
-            elif locations [location5] == None:
+            elif locations[location5] == None:
                 locations[location6].setposition(location5)
                 locations[location5] = locations[location6]
                 locations[location6] = None
@@ -145,25 +145,25 @@ def move_block(x, y):
                 t_list[8].hideturtle()
             else:
                 pass
-        if -50 >= x >= -150 and -30 >= y >= -130:
-            #print("7번 위치")
+        elif -50 >= x >= -150 and -30 >= y >= -130:
+            # print("7번 위치")
             if locations[location4] == None:
                 locations[location7].setposition(location4)
                 locations[location4] = locations[location7]
                 locations[location7] = None
-            elif locations [location8] == None:
+            elif locations[location8] == None:
                 locations[location7].setposition(location8)
                 locations[location8] = locations[location7]
                 locations[location7] = None
             else:
                 pass
-        if 50 >= x >= -50 and -30 >= y >= -130:
-            #print("8번 위치")
+        elif 50 >= x >= -50 and -30 >= y >= -130:
+            # print("8번 위치")
             if locations[location5] == None:
                 locations[location8].setposition(location5)
                 locations[location5] = locations[location8]
                 locations[location8] = None
-            elif locations [location7] == None:
+            elif locations[location7] == None:
                 locations[location8].setposition(location7)
                 locations[location7] = locations[location8]
                 locations[location8] = None
@@ -174,8 +174,8 @@ def move_block(x, y):
                 t_list[8].hideturtle()
             else:
                 pass
-        if 50 <= x <= 150 and -30 >= y >= -130:
-            #print("9번 위치")
+        elif 50 <= x <= 150 and -30 >= y >= -130:
+            # print("9번 위치")
             if locations[location6] == None:
                 locations[location9].setposition(location6)
                 locations[location6] = locations[location9]
@@ -189,7 +189,9 @@ def move_block(x, y):
             else:
                 pass
 
-        if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None):
+        if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (
+                locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (
+                locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None):
             game_over()
 
 
@@ -199,7 +201,7 @@ def quit_game(x, y):
 
 def game_over():
     endTime = time.time()
-    playTime = time.localtime(endTime-startTime)
+    playTime = time.localtime(endTime - startTime)
     for x in t_list:
         x.hideturtle()
     gameover.showturtle()
@@ -248,7 +250,7 @@ def start_game(x, y):
             gameB = True
             start_game(0, 0)
         else:
-            t_list3 = [] # 블록 순서를 위한 배열
+            t_list3 = []  # 블록 순서를 위한 배열
             for x in range(0, len(t_list2)):
                 t_list3.append(t_list[t_list2[x] - 1])
             for i in range(0, len(t_list3)):
@@ -263,16 +265,17 @@ def set_blocks():
         path = "img/" + str(i) + ".gif"
         t.register_shape(path)
         t_list[i - 1].penup()
-        t_list[i-1].shape(path)
-        t_list[i-1].shapesize(5, 5, 0)
-        t_list[i-1].goto(l_list[i-1])
-        t_list[i-1].onclick(move_block)
+        t_list[i - 1].shape(path)
+        t_list[i - 1].shapesize(5, 5, 0)
+        t_list[i - 1].goto(l_list[i - 1])
+        t_list[i - 1].onclick(move_block)
+
     t.register_shape("img/start.gif")
     t.register_shape("img/quit.gif")
     t.register_shape("img/title.gif")
     t.register_shape("img/gameover.gif")
     t.register_shape("img/pen.gif")
-    
+
     title.penup()
     title.shape("img/title.gif")
     title.setposition(130, 260)
