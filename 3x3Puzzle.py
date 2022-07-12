@@ -64,7 +64,7 @@ def move_block(x, y):
                 locations[location1] = None
             else:
                 pass
-        elif 50 >= x >= -50 and 70 <= y <= 170:
+        if 50 >= x >= -50 and 70 <= y <= 170:
             #print("2번 위치")
             if locations[location1] == None:
                 locations[location2].setposition(location1)
@@ -80,7 +80,7 @@ def move_block(x, y):
                 locations[location2] = None
             else:
                 pass
-        elif 50 <= x <= 150 and 70 <= y <= 170:
+        if 50 <= x <= 150 and 70 <= y <= 170:
             #print("3번 위치")
             if locations[location2] == None:
                 locations[location3].setposition(location2)
@@ -92,7 +92,7 @@ def move_block(x, y):
                 locations[location3] = None
             else:
                 pass
-        elif -50 >= x >= -150 and 70 >= y >= -30:
+        if -50 >= x >= -150 and 70 >= y >= -30:
             #print("4번 위치")
             if locations[location1] == None:
                 locations[location4].setposition(location1)
@@ -108,7 +108,7 @@ def move_block(x, y):
                 locations[location4] = None
             else:
                 pass
-        elif 50 >= x >= -50 and 70 >= y >= -30:
+        if 50 >= x >= -50 and 70 >= y >= -30:
             #print("5번 위치")
             if locations[location2] == None:
                 locations[location5].setposition(location2)
@@ -128,7 +128,7 @@ def move_block(x, y):
                 locations[location5] = None
             else:
                 pass
-        elif 50 <= x <= 150 and 70 >= y >= -30:
+        if 50 <= x <= 150 and 70 >= y >= -30:
             #print("6번 위치")
             if locations[location3] == None:
                 locations[location6].setposition(location3)
@@ -145,7 +145,7 @@ def move_block(x, y):
                 t_list[8].hideturtle()
             else:
                 pass
-        elif -50 >= x >= -150 and -30 >= y >= -130:
+        if -50 >= x >= -150 and -30 >= y >= -130:
             #print("7번 위치")
             if locations[location4] == None:
                 locations[location7].setposition(location4)
@@ -157,7 +157,7 @@ def move_block(x, y):
                 locations[location7] = None
             else:
                 pass
-        elif 50 >= x >= -50 and -30 >= y >= -130:
+        if 50 >= x >= -50 and -30 >= y >= -130:
             #print("8번 위치")
             if locations[location5] == None:
                 locations[location8].setposition(location5)
@@ -174,7 +174,7 @@ def move_block(x, y):
                 t_list[8].hideturtle()
             else:
                 pass
-        elif 50 <= x <= 150 and -30 >= y >= -130:
+        if 50 <= x <= 150 and -30 >= y >= -130:
             #print("9번 위치")
             if locations[location6] == None:
                 locations[location9].setposition(location6)
@@ -249,7 +249,7 @@ def start_game(x, y):
             gameB = True
             start_game(0, 0)
         else:
-            t_list3 = [] #블록 순서를 위한 배열
+            t_list3 = [] # 블록 순서를 위한 배열
             for x in range(0, len(t_list2)):
                 t_list3.append(t_list[t_list2[x] - 1])
             for i in range(0, len(t_list3)):
