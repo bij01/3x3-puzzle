@@ -10,51 +10,10 @@ t6 = t.Turtle()
 t7 = t.Turtle()
 t8 = t.Turtle()
 t9 = t.Turtle()
+start = t.Turtle()
 
-t1.penup()
-t2.penup()
-t3.penup()
-t4.penup()
-t5.penup()
-t6.penup()
-t7.penup()
-t8.penup()
-t9.penup()
-
-t1.shape("square")
-t2.shape("square")
-t3.shape("square")
-t4.shape("square")
-t5.shape("square")
-t6.shape("square")
-t7.shape("square")
-t8.shape("square")
-t9.shape("square")
-
-t1.shapesize(5, 5, 0)
-t2.shapesize(5, 5, 0)
-t3.shapesize(5, 5, 0)
-t4.shapesize(5, 5, 0)
-t5.shapesize(5, 5, 0)
-t6.shapesize(5, 5, 0)
-t7.shapesize(5, 5, 0)
-t8.shapesize(5, 5, 0)
-t9.shapesize(5, 5, 0)
-
-t1.color("blue")
-t2.color("gray")
-t3.color("yellow")
-t4.color("gray")
-t5.color("green")
-t6.color("gray")
-t7.color("blue")
-t8.color("gray")
-t9.color("white")
-
-
-
-location = {1:[-100, 100], 2:[0, 100], 3:[100, 100]}
-block = [1, 2, 3, 4, 5, 6, 7, 8]
+t.bgpic("img/bg.gif")
+t.setup(567, 564)
 
 location1 = -100, 100
 location2 = 0, 100
@@ -66,23 +25,28 @@ location7 = -100, -100
 location8 = 0, -100
 location9 = 100, -100
 
-t1.goto(location1)
-t2.goto(location2)
-t3.goto(location3)
-t4.goto(location4)
-t5.goto(location5)
-t6.goto(location6)
-t7.goto(location7)
-t8.goto(location8)
-t9.goto(location9)
+t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
+l_list = [location1, location2, location3, location4, location5,
+          location6, location7, location8, location9]
 
-locations = {location1:t1, location2:t2, location3: t3, location4:t4,
+locations = {location1:t1, location2:t2, location3:t3, location4:t4,
              location5:t5, location6:t6, location7:t7, location8:t8,
              location9:None}
+
 
 def move_block(x, y):
     print(locations)
     print(x, y)
+    print(locations[location1] == t1)
+    print(locations[location2] == t2)
+    print(locations[location3] == t3)
+    print(locations[location4] == t4)
+    print(locations[location5] == t5)
+    print(locations[location6] == t6)
+    print(locations[location7] == t7)
+    print(locations[location8] == t8)
+    print(locations[location9] == t9)
+
     if -50 >= x >= -150 and 50 <= y <= 150:
         print("1번 위치")
         if locations[location2] == None:
@@ -122,7 +86,7 @@ def move_block(x, y):
             locations[location6] = locations[location3]
             locations[location3] = None
         else:
-            pass  
+            pass
     elif -50 >= x >= -150 and 50 >= y >= -50:
         print("4번 위치")
         if locations[location1] == None:
@@ -173,6 +137,7 @@ def move_block(x, y):
             locations[location6].setposition(location9)
             locations[location9] = locations[location6]
             locations[location6] = None
+            t_list[8].hideturtle()
         else:
             pass
     elif -50 >= x >= -150 and -50 >= y >= -150:
@@ -201,6 +166,7 @@ def move_block(x, y):
             locations[location8].setposition(location9)
             locations[location9] = locations[location8]
             locations[location8] = None
+            t_list[8].hideturtle()
         else:
             pass       
     elif 50 <= x <= 150 and -50 >= y >= -150:
@@ -209,10 +175,12 @@ def move_block(x, y):
             locations[location9].setposition(location6)
             locations[location6] = locations[location9]
             locations[location9] = None
+            t_list[8].showturtle()
         elif locations[location8] == None:
             locations[location9].setposition(location8)
             locations[location8] = locations[location9]
             locations[location9] = None
+            t_list[8].showturtle()
         else:
             pass 
     
@@ -237,9 +205,6 @@ def move_block(x, y):
     print("8번퍼즐 위치:", t8.position())
     print("9번퍼즐 위치:", t9.position())
 
-
-
-
 t1.onclick(move_block)
 t2.onclick(move_block)
 t3.onclick(move_block)
@@ -250,6 +215,21 @@ t7.onclick(move_block)
 t8.onclick(move_block)
 t9.onclick(move_block)
 
+def make_shape():
+    for i in range(1, 10):
+        path = "img/" + str(i) + ".gif"
+        t.register_shape(path)
+        t_list[i - 1].penup()
+        t_list[i-1].shape(path)
+        t_list[i-1].shapesize(5, 5, 0)
+        t_list[i-1].goto(l_list[i-1])
+        t_list[i-1].onclick(move_block)
+t.register_shape("img/start.gif")
+start.shape("img/start.gif")
+start.penup()
+start.setposition(0, -200)
+
+make_shape()
 t.mainloop()
 
 
