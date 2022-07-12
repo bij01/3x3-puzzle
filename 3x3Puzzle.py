@@ -6,6 +6,9 @@ t.title("3x3 Puzzle Game")
 t.bgpic("img/bg.gif")
 t.setup(567, 564)
 
+btnB = False
+gameB = True
+
 t1 = t.Turtle()
 t2 = t.Turtle()
 t3 = t.Turtle()
@@ -45,146 +48,149 @@ locations = {location1:t1, location2:t2, location3:t3, location4:t4,
              location9:None}
 
 def move_block(x, y):
-    #print(x, y)
-    if -50 >= x >= -150 and 70 <= y <= 170:
-        #print("1번 위치")
-        if locations[location2] == None:
-            locations[location1].setposition(location2)
-            locations[location2] = locations[location1]
-            locations[location1] = None
-        elif locations[location4] == None:
-            locations[location1].setposition(location4)
-            locations[location4] = locations[location1]
-            locations[location1] = None
-        else:
-            pass
-    elif 50 >= x >= -50 and 70 <= y <= 170:
-        #print("2번 위치")
-        if locations[location1] == None:
-            locations[location2].setposition(location1)
-            locations[location1] = locations[location2]
-            locations[location2] = None
-        elif locations[location5] == None:
-            locations[location2].setposition(location5)
-            locations[location5] = locations[location2]
-            locations[location2] = None
-        elif locations[location3] == None:
-            locations[location2].setposition(location3)
-            locations[location3] = locations[location2]
-            locations[location2] = None
-        else:
-            pass
-    elif 50 <= x <= 150 and 70 <= y <= 170:
-        #print("3번 위치")
-        if locations[location2] == None:
-            locations[location3].setposition(location2)
-            locations[location2] = locations[location3]
-            locations[location3] = None
-        elif locations[location6] == None:
-            locations[location3].setposition(location6)
-            locations[location6] = locations[location3]
-            locations[location3] = None
-        else:
-            pass
-    elif -50 >= x >= -150 and 70 >= y >= -30:
-        #print("4번 위치")
-        if locations[location1] == None:
-            locations[location4].setposition(location1)
-            locations[location1] = locations[location4]
-            locations[location4] = None
-        elif locations[location7] == None:
-            locations[location4].setposition(location7)
-            locations[location7] = locations[location4]
-            locations[location4] = None
-        elif locations[location5] == None:
-            locations[location4].setposition(location5)
-            locations[location5] = locations[location4]
-            locations[location4] = None
-        else:
-            pass
-    elif 50 >= x >= -50 and 70 >= y >= -30:
-        #print("5번 위치")
-        if locations[location2] == None:
-            locations[location5].setposition(location2)
-            locations[location2] = locations[location5]
-            locations[location5] = None
-        elif locations[location4] == None:
-            locations[location5].setposition(location4)
-            locations[location4] = locations[location5]
-            locations[location5] = None
-        elif locations[location8] == None:
-            locations[location5].setposition(location8)
-            locations[location8] = locations[location5]
-            locations[location5] = None
-        elif locations[location6] == None:
-            locations[location5].setposition(location6)
-            locations[location6] = locations[location5]
-            locations[location5] = None   
-        else:
-            pass  
-    elif 50 <= x <= 150 and 70 >= y >= -30:
-        #print("6번 위치")
-        if locations[location3] == None:
-            locations[location6].setposition(location3)
-            locations[location3] = locations[location6]
-            locations[location6] = None
-        elif locations [location5] == None:
-            locations[location6].setposition(location5)
-            locations[location5] = locations[location6]
-            locations[location6] = None
-        elif locations[location9] == None:
-            locations[location6].setposition(location9)
-            locations[location9] = locations[location6]
-            locations[location6] = None
-            t_list[8].hideturtle()
-        else:
-            pass
-    elif -50 >= x >= -150 and -30 >= y >= -130:
-        #print("7번 위치")
-        if locations[location4] == None:
-            locations[location7].setposition(location4)
-            locations[location4] = locations[location7]
-            locations[location7] = None
-        elif locations [location8] == None:
-            locations[location7].setposition(location8)
-            locations[location8] = locations[location7]
-            locations[location7] = None
-        else:
-            pass
-    elif 50 >= x >= -50 and -30 >= y >= -130:
-        #print("8번 위치")
-        if locations[location5] == None:
-            locations[location8].setposition(location5)
-            locations[location5] = locations[location8]
-            locations[location8] = None
-        elif locations [location7] == None:
-            locations[location8].setposition(location7)
-            locations[location7] = locations[location8]
-            locations[location8] = None
-        elif locations[location9] == None:
-            locations[location8].setposition(location9)
-            locations[location9] = locations[location8]
-            locations[location8] = None
-            t_list[8].hideturtle()
-        else:
-            pass       
-    elif 50 <= x <= 150 and -30 >= y >= -130:
-        #print("9번 위치")
-        if locations[location6] == None:
-            locations[location9].setposition(location6)
-            locations[location6] = locations[location9]
-            locations[location9] = None
-            t_list[8].showturtle()
-        elif locations[location8] == None:
-            locations[location9].setposition(location8)
-            locations[location8] = locations[location9]
-            locations[location9] = None
-            t_list[8].showturtle()
-        else:
-            pass 
-    
-    if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None):
-        game_over()
+    if btnB == False:
+        pass
+    else:
+        #print(x, y)
+        if -50 >= x >= -150 and 70 <= y <= 170:
+            #print("1번 위치")
+            if locations[location2] == None:
+                locations[location1].setposition(location2)
+                locations[location2] = locations[location1]
+                locations[location1] = None
+            elif locations[location4] == None:
+                locations[location1].setposition(location4)
+                locations[location4] = locations[location1]
+                locations[location1] = None
+            else:
+                pass
+        elif 50 >= x >= -50 and 70 <= y <= 170:
+            #print("2번 위치")
+            if locations[location1] == None:
+                locations[location2].setposition(location1)
+                locations[location1] = locations[location2]
+                locations[location2] = None
+            elif locations[location5] == None:
+                locations[location2].setposition(location5)
+                locations[location5] = locations[location2]
+                locations[location2] = None
+            elif locations[location3] == None:
+                locations[location2].setposition(location3)
+                locations[location3] = locations[location2]
+                locations[location2] = None
+            else:
+                pass
+        elif 50 <= x <= 150 and 70 <= y <= 170:
+            #print("3번 위치")
+            if locations[location2] == None:
+                locations[location3].setposition(location2)
+                locations[location2] = locations[location3]
+                locations[location3] = None
+            elif locations[location6] == None:
+                locations[location3].setposition(location6)
+                locations[location6] = locations[location3]
+                locations[location3] = None
+            else:
+                pass
+        elif -50 >= x >= -150 and 70 >= y >= -30:
+            #print("4번 위치")
+            if locations[location1] == None:
+                locations[location4].setposition(location1)
+                locations[location1] = locations[location4]
+                locations[location4] = None
+            elif locations[location7] == None:
+                locations[location4].setposition(location7)
+                locations[location7] = locations[location4]
+                locations[location4] = None
+            elif locations[location5] == None:
+                locations[location4].setposition(location5)
+                locations[location5] = locations[location4]
+                locations[location4] = None
+            else:
+                pass
+        elif 50 >= x >= -50 and 70 >= y >= -30:
+            #print("5번 위치")
+            if locations[location2] == None:
+                locations[location5].setposition(location2)
+                locations[location2] = locations[location5]
+                locations[location5] = None
+            elif locations[location4] == None:
+                locations[location5].setposition(location4)
+                locations[location4] = locations[location5]
+                locations[location5] = None
+            elif locations[location8] == None:
+                locations[location5].setposition(location8)
+                locations[location8] = locations[location5]
+                locations[location5] = None
+            elif locations[location6] == None:
+                locations[location5].setposition(location6)
+                locations[location6] = locations[location5]
+                locations[location5] = None
+            else:
+                pass
+        elif 50 <= x <= 150 and 70 >= y >= -30:
+            #print("6번 위치")
+            if locations[location3] == None:
+                locations[location6].setposition(location3)
+                locations[location3] = locations[location6]
+                locations[location6] = None
+            elif locations [location5] == None:
+                locations[location6].setposition(location5)
+                locations[location5] = locations[location6]
+                locations[location6] = None
+            elif locations[location9] == None:
+                locations[location6].setposition(location9)
+                locations[location9] = locations[location6]
+                locations[location6] = None
+                t_list[8].hideturtle()
+            else:
+                pass
+        elif -50 >= x >= -150 and -30 >= y >= -130:
+            #print("7번 위치")
+            if locations[location4] == None:
+                locations[location7].setposition(location4)
+                locations[location4] = locations[location7]
+                locations[location7] = None
+            elif locations [location8] == None:
+                locations[location7].setposition(location8)
+                locations[location8] = locations[location7]
+                locations[location7] = None
+            else:
+                pass
+        elif 50 >= x >= -50 and -30 >= y >= -130:
+            #print("8번 위치")
+            if locations[location5] == None:
+                locations[location8].setposition(location5)
+                locations[location5] = locations[location8]
+                locations[location8] = None
+            elif locations [location7] == None:
+                locations[location8].setposition(location7)
+                locations[location7] = locations[location8]
+                locations[location8] = None
+            elif locations[location9] == None:
+                locations[location8].setposition(location9)
+                locations[location9] = locations[location8]
+                locations[location8] = None
+                t_list[8].hideturtle()
+            else:
+                pass
+        elif 50 <= x <= 150 and -30 >= y >= -130:
+            #print("9번 위치")
+            if locations[location6] == None:
+                locations[location9].setposition(location6)
+                locations[location6] = locations[location9]
+                locations[location9] = None
+                t_list[8].showturtle()
+            elif locations[location8] == None:
+                locations[location9].setposition(location8)
+                locations[location8] = locations[location9]
+                locations[location9] = None
+                t_list[8].showturtle()
+            else:
+                pass
+
+        if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None):
+            game_over()
 
 
 def quit_game(x, y):
@@ -206,30 +212,39 @@ def game_over():
 
 
 def start_game(x, y):
-    for i in range(0, 8):
-        t_list[i].goto(l_list[i])
-        locations[l_list[i]] = t_list[i]
-
-    locations[l_list[8]] = None
-    global startTime
-    startTime = time.time()
-    pen.clear()
-    for x in t_list:
-        x.showturtle()
-    gameover.hideturtle()
-    pen.hideturtle()
-    random.shuffle(t_list3)
-
-    fCount = 0
-    for x in range(len(t_list2)):
-        if t_list2[x] != t_list3[x]:
-            fCount += 1
-    if fCount % 2 != 0:
-        start_game(0, 0)
+    global btnB, gameB
+    btnB = False
+    if gameB == False:
+        pass
     else:
-        for i in range(0, len(t_list3)):
-            t_list3[i].goto(l_list[i])
-            locations[l_list[i]] = t_list3[i]
+        gameB = False
+        for i in range(0, 8):
+            t_list[i].goto(l_list[i])
+            locations[l_list[i]] = t_list[i]
+
+        locations[l_list[8]] = None
+        global startTime
+        startTime = time.time()
+        pen.clear()
+        for x in t_list:
+            x.showturtle()
+        gameover.hideturtle()
+        pen.hideturtle()
+        random.shuffle(t_list3)
+
+        fCount = 0
+        for x in range(len(t_list2)):
+            if t_list2[x] != t_list3[x]:
+                fCount += 1
+        if fCount % 2 != 0:
+            gameB = True
+            start_game(0, 0)
+        else:
+            for i in range(0, len(t_list3)):
+                t_list3[i].goto(l_list[i])
+                locations[l_list[i]] = t_list3[i]
+            btnB = True
+            gameB = True
 
 
 def set_blocks():
