@@ -1,6 +1,7 @@
 import turtle as t
 import time
 
+
 t1 = t.Turtle()
 t2 = t.Turtle()
 t3 = t.Turtle()
@@ -177,7 +178,10 @@ def move_block(x, y):
             locations[location9] = None
             t_list[8].showturtle()
         else:
-             pass
+            pass 
+    
+    if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None): 
+        print("the game's over")
 
     print(locations[location1] == t1)
     print(locations[location2] == t2)
@@ -214,6 +218,7 @@ def set_blocks():
         t_list[i-1].shapesize(5, 5, 0)
         t_list[i-1].goto(l_list[i-1])
         t_list[i-1].onclick(move_block)
+
     t.register_shape("img/start.gif")
     t.register_shape("img/quit.gif")
     t.register_shape("img/title.gif")
@@ -239,3 +244,20 @@ def set_blocks():
 set_blocks()
 
 t.mainloop()
+
+
+
+
+
+
+
+
+
+'''     
+msg = game_font.render(game_result, True, (255, 255, 0))            
+msg_rect = msg.get_rect(center=(int(screen_width / 2), int(screen_height / 2)))
+screen.blit(msg, msg_rect)
+pygame.display.update()
+pygame.time.delay(2000)
+sys.exit("인자값") ----import sys
+'''
