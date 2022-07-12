@@ -1,7 +1,6 @@
 import turtle as t
-from tkinter import*
-from tkinter import messagebox as msg
-
+import time
+import random
 
 t1 = t.Turtle()
 t2 = t.Turtle()
@@ -13,21 +12,27 @@ t7 = t.Turtle()
 t8 = t.Turtle()
 t9 = t.Turtle()
 start = t.Turtle()
+quit = t.Turtle()
+title = t.Turtle()
+gameover = t.Turtle()
+gameover.hideturtle()
 
 t.bgpic("img/bg.gif")
 t.setup(567, 564)
+t.title("3x3 Puzzle Game")
 
-location1 = -100, 100
-location2 = 0, 100
-location3 = 100, 100
-location4 = -100, 0
-location5 = 0, 0
-location6 = 100, 0
-location7 = -100, -100
-location8 = 0, -100
-location9 = 100, -100
+location1 = -100, 120
+location2 = 0, 120
+location3 = 100, 120
+location4 = -100, 20
+location5 = 0, 20
+location6 = 100, 20
+location7 = -100, -80
+location8 = 0, -80
+location9 = 100, -80
 
 t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
+t_list2 = [t1, t2, t3, t4, t5, t6, t7, t8]
 l_list = [location1, location2, location3, location4, location5,
           location6, location7, location8, location9]
 
@@ -39,17 +44,7 @@ locations = {location1:t1, location2:t2, location3:t3, location4:t4,
 def move_block(x, y):
     print(locations)
     print(x, y)
-    print(locations[location1] == t1)
-    print(locations[location2] == t2)
-    print(locations[location3] == t3)
-    print(locations[location4] == t4)
-    print(locations[location5] == t5)
-    print(locations[location6] == t6)
-    print(locations[location7] == t7)
-    print(locations[location8] == t8)
-    print(locations[location9] == t9)
-
-    if -50 >= x >= -150 and 50 <= y <= 150:
+    if -50 >= x >= -150 and 70 <= y <= 170:
         print("1번 위치")
         if locations[location2] == None:
             locations[location1].setposition(location2)
@@ -61,7 +56,7 @@ def move_block(x, y):
             locations[location1] = None
         else:
             pass
-    elif 50 >= x >= -50 and 50 <= y <= 150:
+    elif 50 >= x >= -50 and 70 <= y <= 170:
         print("2번 위치")
         if locations[location1] == None:
             locations[location2].setposition(location1)
@@ -77,7 +72,7 @@ def move_block(x, y):
             locations[location2] = None
         else:
             pass
-    elif 50 <= x <= 150 and 50 <= y <= 150:
+    elif 50 <= x <= 150 and 70 <= y <= 170:
         print("3번 위치")
         if locations[location2] == None:
             locations[location3].setposition(location2)
@@ -89,7 +84,7 @@ def move_block(x, y):
             locations[location3] = None
         else:
             pass
-    elif -50 >= x >= -150 and 50 >= y >= -50:
+    elif -50 >= x >= -150 and 70 >= y >= -30:
         print("4번 위치")
         if locations[location1] == None:
             locations[location4].setposition(location1)
@@ -105,7 +100,7 @@ def move_block(x, y):
             locations[location4] = None
         else:
             pass
-    elif 50 >= x >= -50 and 50 >= y >= -50:
+    elif 50 >= x >= -50 and 70 >= y >= -30:
         print("5번 위치")
         if locations[location2] == None:
             locations[location5].setposition(location2)
@@ -125,7 +120,7 @@ def move_block(x, y):
             locations[location5] = None   
         else:
             pass  
-    elif 50 <= x <= 150 and 50 >= y >= -50:
+    elif 50 <= x <= 150 and 70 >= y >= -30:
         print("6번 위치")
         if locations[location3] == None:
             locations[location6].setposition(location3)
@@ -142,7 +137,7 @@ def move_block(x, y):
             t_list[8].hideturtle()
         else:
             pass
-    elif -50 >= x >= -150 and -50 >= y >= -150:
+    elif -50 >= x >= -150 and -30 >= y >= -130:
         print("7번 위치")
         if locations[location4] == None:
             locations[location7].setposition(location4)
@@ -154,7 +149,7 @@ def move_block(x, y):
             locations[location7] = None
         else:
             pass
-    elif 50 >= x >= -50 and -50 >= y >= -150:
+    elif 50 >= x >= -50 and -30 >= y >= -130:
         print("8번 위치")
         if locations[location5] == None:
             locations[location8].setposition(location5)
@@ -171,7 +166,7 @@ def move_block(x, y):
             t_list[8].hideturtle()
         else:
             pass       
-    elif 50 <= x <= 150 and -50 >= y >= -150:
+    elif 50 <= x <= 150 and -30 >= y >= -130:
         print("9번 위치")
         if locations[location6] == None:
             locations[location9].setposition(location6)
@@ -188,7 +183,7 @@ def move_block(x, y):
     
     if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None): 
         print("the game's over")
-        t.bye()
+          
 
 
     print("1번퍼즐 위치:", t1.position())
@@ -201,17 +196,28 @@ def move_block(x, y):
     print("8번퍼즐 위치:", t8.position())
     print("9번퍼즐 위치:", t9.position())
 
-t1.onclick(move_block)
-t2.onclick(move_block)
-t3.onclick(move_block)
-t4.onclick(move_block)
-t5.onclick(move_block)
-t6.onclick(move_block)
-t7.onclick(move_block)
-t8.onclick(move_block)
-t9.onclick(move_block)
 
-def make_shape():
+    print(locations[location1] == t1)
+    print(locations[location2] == t2)
+    print(locations[location3] == t3)
+    print(locations[location4] == t4)
+    print(locations[location5] == t5)
+    print(locations[location6] == t6)
+    print(locations[location7] == t7)
+    print(locations[location8] == t8)
+    print(locations[location9] == None)
+
+def game_over(x, y):
+    print("")
+
+def start_game(x, y): 
+    random.shuffle(t_list2)
+    #print(t_list)
+    for i in range(0,len(t_list2)) :
+        t_list2[i].goto(l_list[i])
+        locations[l_list[i]] = t_list2[i]
+       
+def set_blocks():
     for i in range(1, 10):
         path = "img/" + str(i) + ".gif"
         t.register_shape(path)
@@ -220,12 +226,30 @@ def make_shape():
         t_list[i-1].shapesize(5, 5, 0)
         t_list[i-1].goto(l_list[i-1])
         t_list[i-1].onclick(move_block)
-t.register_shape("img/start.gif")
-start.shape("img/start.gif")
-start.penup()
-start.setposition(0, -200)
 
-make_shape()
+    t.register_shape("img/start.gif")
+    t.register_shape("img/quit.gif")
+    t.register_shape("img/title.gif")
+    t.register_shape("img/gameover.gif")
+
+    title.penup()
+    title.shape("img/title.gif")
+    title.setposition(130, 260)
+
+    start.shape("img/start.gif")
+    start.penup()
+    start.setposition(-80, -200)
+    start.onclick(start_game)
+
+    quit.shape("img/quit.gif")
+    quit.penup()
+    quit.goto(80, -200)
+    gameover.shape("img/gameover.gif")
+    gameover.penup()
+    gameover.goto(0, 100)
+
+
+set_blocks()
 t.mainloop()
 
 
