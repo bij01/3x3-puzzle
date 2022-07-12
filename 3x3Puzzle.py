@@ -3,7 +3,7 @@ import time
 import random
 
 t.title("3x3 Puzzle Game")
-t.bgpic("img/bg.gif")
+t.bgpic("C://Users//Kwon//Desktop//git//3x3_puzzle//img//bg.gif")
 t.setup(567, 564)
 
 btnB = False
@@ -198,6 +198,7 @@ def quit_game(x, y):
 
 
 def game_over():
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//start.gif")
     endTime = time.time()
     playTime = time.localtime(endTime-startTime)
     for x in t_list:
@@ -209,10 +210,12 @@ def game_over():
     pen.write("걸린시간: {}분 {}초".format(playTime.tm_min, playTime.tm_sec)
               , move=True, align='center', font=('배달의민족 주아', 20, 'normal'))
     pen.goto(120, 20)
+    start.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//start.gif")
 
 
 def start_game(x, y):
-
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//down.gif")
+    
     global btnB, gameB
     btnB = False
     if gameB == False:
@@ -231,6 +234,7 @@ def start_game(x, y):
             x.showturtle()
         gameover.hideturtle()
         pen.hideturtle()
+        start.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//down.gif")
         random.shuffle(t_list2)
 
         fCount = 0
@@ -257,11 +261,12 @@ def start_game(x, y):
                 locations[l_list[i]] = t_list3[i]
             btnB = True
             gameB = True
+            
 
 
 def set_blocks():
     for i in range(1, 10):
-        path = "img/" + str(i) + ".gif"
+        path = "C://Users//Kwon//Desktop//git//3x3_puzzle//img//" + str(i) + ".gif"
         t.register_shape(path)
         t_list[i - 1].penup()
         t_list[i-1].shape(path)
@@ -269,31 +274,31 @@ def set_blocks():
         t_list[i-1].goto(l_list[i-1])
         t_list[i-1].onclick(move_block)
 
-    t.register_shape("img/start.gif")
-    t.register_shape("img/quit.gif")
-    t.register_shape("img/title.gif")
-    t.register_shape("img/gameover.gif")
-    t.register_shape("img/pen.gif")
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//start.gif")
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//quit.gif")
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//title.gif")
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//gameover.gif")
+    t.register_shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//pen.gif")
     
     title.penup()
-    title.shape("img/title.gif")
+    title.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//title.gif")
     title.setposition(130, 260)
 
-    start.shape("img/start.gif")
+    start.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//start.gif")
     start.penup()
     start.setposition(-80, -200)
     start.onclick(start_game)
 
-    quit.shape("img/quit.gif")
+    quit.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//quit.gif")
     quit.penup()
     quit.goto(80, -200)
     quit.onclick(quit_game)
 
-    gameover.shape("img/gameover.gif")
+    gameover.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//gameover.gif")
     gameover.penup()
     gameover.goto(0, 100)
 
-    pen.shape("img/pen.gif")
+    pen.shape("C://Users//Kwon//Desktop//git//3x3_puzzle//img//pen.gif")
 
 
 set_blocks()
