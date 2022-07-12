@@ -1,5 +1,7 @@
 import turtle as t
-import pygame
+from tkinter import*
+from tkinter import messagebox as msg
+
 
 t1 = t.Turtle()
 t2 = t.Turtle()
@@ -186,15 +188,9 @@ def move_block(x, y):
     
     if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None): 
         print("the game's over")
-        pygame.quit()
-    '''        
-    li = [t1, t2, t3, t4, t5, t6, t7, t8, t9]  
-    for i in li:
-        if locations.get() == i:
-            print("Game's over") 
-            pygame.quit()
-    '''           
-     
+        t.bye()
+
+
     print("1번퍼즐 위치:", t1.position())
     print("2번퍼즐 위치:", t2.position())
     print("3번퍼즐 위치:", t3.position())
@@ -239,12 +235,3 @@ t.mainloop()
 
 
 
-
-'''     
-msg = game_font.render(game_result, True, (255, 255, 0))            
-msg_rect = msg.get_rect(center=(int(screen_width / 2), int(screen_height / 2)))
-screen.blit(msg, msg_rect)
-pygame.display.update()
-pygame.time.delay(2000)
-sys.exit("인자값") ----import sys
-'''
