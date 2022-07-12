@@ -37,8 +37,8 @@ location8 = 0, -80
 location9 = 100, -80
 
 t_list = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
-t_list2 = [t1, t2, t3, t4, t5, t6, t7, t8]
-t_list3 = [t1, t2, t3, t4, t5, t6, t7, t8]
+t_list2 = [1, 2, 3, 4, 5, 6, 7, 8]
+
 
 l_list = [location1, location2, location3, location4, location5,
           location6, location7, location8, location9]
@@ -212,6 +212,7 @@ def game_over():
 
 
 def start_game(x, y):
+
     global btnB, gameB
     btnB = False
     if gameB == False:
@@ -230,16 +231,27 @@ def start_game(x, y):
             x.showturtle()
         gameover.hideturtle()
         pen.hideturtle()
-        random.shuffle(t_list3)
+        random.shuffle(t_list2)
 
         fCount = 0
-        for x in range(len(t_list2)):
-            if t_list2[x] != t_list3[x]:
-                fCount += 1
+        # [무질서 카운트]
+        # 리스트의 앞순서에 있는 숫자를 뒷순서에 있는 숫자들과 하나씩 비교했을때
+        # 뒷순서에 있는 숫자가 앞순서에 있는 숫자보다 작을 경우 무질서 카운트를 증가시킴
+        for x in range(0, len(t_list2)):
+            for y in range(x, len(t_list2)):
+                if t_list2[x] <= t_list2[y]:
+                    pass
+                else:
+                    fCount += 1
+        # 무질서 카운트를 2로 나눈 나머지 값이 1일 경우 짝수, 0일 경우 홀수
+        # 나머지 값이 홀수일 경우 정상적인 게임 진행이 불가능하므로 랜덤값을 다시 돌림
         if fCount % 2 != 0:
             gameB = True
             start_game(0, 0)
         else:
+            t_list3 = [] #블록 순서를 위한 배열
+            for x in range(0, len(t_list2)):
+                t_list3.append(t_list[t_list2[x] - 1])
             for i in range(0, len(t_list3)):
                 t_list3[i].goto(l_list[i])
                 locations[l_list[i]] = t_list3[i]
