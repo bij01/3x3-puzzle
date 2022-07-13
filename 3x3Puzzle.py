@@ -328,6 +328,6 @@ def set_functions():
 
 set_blocks()
 set_init()
-
 set_functions()
+
 t.mainloop()
