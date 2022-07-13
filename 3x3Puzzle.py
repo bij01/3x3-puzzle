@@ -208,9 +208,12 @@ def game_over():
     pen.showturtle()
     pen.penup()
     pen.goto(0, 0)
-    pen.write("걸린시간: {}분 {}초".format(playTime.tm_min, playTime.tm_sec)
+    c = pen.write("걸린시간: {}분 {}초".format(playTime.tm_min, playTime.tm_sec)
               , move=True, align='center', font=('배달의민족 주아', 20, 'normal'))
+    d = pen.write("이번판에 움직인 블럭의 횟수 : {}회".format(move_block)
+              , move=False,align='center',font=('배달의민족 주아', 20, 'normal'))
     pen.goto(120, 20)
+    pen.goto(120, 40)
 
 
 def start_game(x, y):
