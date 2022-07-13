@@ -8,6 +8,7 @@ t.setup(567, 564)
 
 btnB = False
 gameB = True
+clickCount = 0
 
 t1 = t.Turtle()
 t2 = t.Turtle()
@@ -51,6 +52,8 @@ def move_block(x, y):
     if btnB == False:
         pass
     else:
+        global clickCount
+        clickCount += 1
         # print(x, y)
         if -50 >= x >= -150 and 70 <= y <= 170:
             # print("1번 위치")
@@ -64,7 +67,7 @@ def move_block(x, y):
                 locations[location1] = None
             else:
                 pass
-        elif 50 >= x >= -50 and 70 <= y <= 170:
+        if 50 >= x >= -50 and 70 <= y <= 170:
             # print("2번 위치")
             if locations[location1] == None:
                 locations[location2].setposition(location1)
@@ -80,7 +83,7 @@ def move_block(x, y):
                 locations[location2] = None
             else:
                 pass
-        elif 50 <= x <= 150 and 70 <= y <= 170:
+        if 50 <= x <= 150 and 70 <= y <= 170:
             # print("3번 위치")
             if locations[location2] == None:
                 locations[location3].setposition(location2)
@@ -92,7 +95,7 @@ def move_block(x, y):
                 locations[location3] = None
             else:
                 pass
-        elif -50 >= x >= -150 and 70 >= y >= -30:
+        if -50 >= x >= -150 and 70 >= y >= -30:
             # print("4번 위치")
             if locations[location1] == None:
                 locations[location4].setposition(location1)
@@ -108,7 +111,7 @@ def move_block(x, y):
                 locations[location4] = None
             else:
                 pass
-        elif 50 >= x >= -50 and 70 >= y >= -30:
+        if 50 >= x >= -50 and 70 >= y >= -30:
             # print("5번 위치")
             if locations[location2] == None:
                 locations[location5].setposition(location2)
@@ -128,7 +131,7 @@ def move_block(x, y):
                 locations[location5] = None
             else:
                 pass
-        elif 50 <= x <= 150 and 70 >= y >= -30:
+        if 50 <= x <= 150 and 70 >= y >= -30:
             # print("6번 위치")
             if locations[location3] == None:
                 locations[location6].setposition(location3)
@@ -145,7 +148,7 @@ def move_block(x, y):
                 t_list[8].hideturtle()
             else:
                 pass
-        elif -50 >= x >= -150 and -30 >= y >= -130:
+        if -50 >= x >= -150 and -30 >= y >= -130:
             # print("7번 위치")
             if locations[location4] == None:
                 locations[location7].setposition(location4)
@@ -157,7 +160,7 @@ def move_block(x, y):
                 locations[location7] = None
             else:
                 pass
-        elif 50 >= x >= -50 and -30 >= y >= -130:
+        if 50 >= x >= -50 and -30 >= y >= -130:
             # print("8번 위치")
             if locations[location5] == None:
                 locations[location8].setposition(location5)
@@ -174,7 +177,7 @@ def move_block(x, y):
                 t_list[8].hideturtle()
             else:
                 pass
-        elif 50 <= x <= 150 and -30 >= y >= -130:
+        if 50 <= x <= 150 and -30 >= y >= -130:
             # print("9번 위치")
             if locations[location6] == None:
                 locations[location9].setposition(location6)
@@ -200,6 +203,7 @@ def quit_game(x, y):
 
 
 def game_over():
+    global clickCount
     endTime = time.time()
     playTime = time.localtime(endTime - startTime)
     for x in t_list:
@@ -211,10 +215,15 @@ def game_over():
     pen.write("걸린시간: {}분 {}초".format(playTime.tm_min, playTime.tm_sec)
               , move=True, align='center', font=('배달의민족 주아', 20, 'normal'))
     pen.goto(120, 20)
+    pen.goto(0, -40)
+    pen.write("블럭을 움직인 횟수: 총 {}회".format(clickCount)
+              , move=True, align='center', font=('배달의민족 주아', 20, 'normal'))
+    pen.goto(170, -30)
 
 
 def start_game(x, y):
-    global btnB, gameB
+    global btnB, gameB, clickCount
+    clickCount = 0
     btnB = False
     if gameB == False:
         pass
