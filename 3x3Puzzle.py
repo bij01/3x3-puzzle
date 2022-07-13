@@ -171,6 +171,7 @@ def move_block(x, y):
     if btnB == False:
         pass
     else:
+
         global clickCount
         clickCount += 1
         # print(x, y)
@@ -310,7 +311,7 @@ def move_block(x, y):
                 t_list[8].showturtle()
             else:
                 pass
-
+        time.sleep(0.05)
         if (locations[location1] == t1) and (locations[location2] == t2) and (locations[location3] == t3) and (
                 locations[location4] == t4) and (locations[location5] == t5) and (locations[location6] == t6) and (
                 locations[location7] == t7) and (locations[location8] == t8) and (locations[location9] == None):
