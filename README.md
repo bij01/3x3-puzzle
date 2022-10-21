@@ -11,4 +11,4 @@ Kosmo220427 team2 3rd project (백인준, 김보민, 권기민)
   3) 게임을 시작하면 1번 ~ 8번 블럭이 랜덤한 위치로 무작위로 섞임
   4) 블럭을 클릭하여 번호를 순차적으로 배치하면 게임종료
 
-### 영상링크 https://www.youtube.com/shorts/V3nrffYskhQ
+- 영상링크 https://www.youtube.com/shorts/V3nrffYskhQ
